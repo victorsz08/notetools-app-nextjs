@@ -1,0 +1,7 @@
+@import "tailwindcss";
+
+
+@theme {
+  --afacad: "var(--afacad)",
+  --poppins: "var(--poppins)"
+}
