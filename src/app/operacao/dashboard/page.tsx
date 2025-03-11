@@ -2,8 +2,8 @@
 
 export default async function Dashboard() {
     return (
-        <section>
-
+        <section className="p-6">
+            
         </section>
     )
 }

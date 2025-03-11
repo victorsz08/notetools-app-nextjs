@@ -69,7 +69,7 @@ export default function Layout({ children } : { children: React.ReactNode }) {
                             {items.map((item, index) => (
                                 <MenuItem key={index} href={item.href} target={item.target}>
                                     <item.Icon className="text-2xl"/>
-                                    <p className="menu-text group-hover:block text-sm">{item.label}</p>
+                                    <p className="menu-text text-[14px]">{item.label}</p>
                                 </MenuItem>
                             ))}
                         </nav>
@@ -78,12 +78,12 @@ export default function Layout({ children } : { children: React.ReactNode }) {
                         <button className="flex p-2 rounded-lg justify-items-center font-normal gap-2 w-fit group-hover:w-full 
                                 group-hover:justify-start items-center text-red-600 bg-red-200">
                             <IoIosLogOut className="text-2xl"/>
-                            <p className="menu-text text-sm">Sair</p>
+                            <p className="menu-text text-[14px]">Sair</p>
                         </button>
                     </div>
                 </section>
             </SibeBar>
-            <section>
+            <section className="pl-[90px]">
                 {children}
             </section>
         </section>
