@@ -23,7 +23,7 @@ export default function RootLayout({
   return (
     <html lang="pt-BR">
       <body
-        className={`${poppins.variable} ${afacad.variable} antialiased`}
+        className={`${poppins.variable} ${afacad.variable} bg-slate-300`}
       >
         {children}
       </body>
