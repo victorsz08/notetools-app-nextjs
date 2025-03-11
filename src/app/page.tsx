@@ -1,7 +1,13 @@
-import Image from "next/image";
+"use client";
+
+import { redirect } from "next/navigation";
+import { useEffect } from "react";
 
 export default function Home() {
-  return (
-    <h1>Hello World</h1>
-  );
+  
+  useEffect(() => {
+    redirect("/operacao/dashboard")
+  },[]);
+  
+  return null;
 }

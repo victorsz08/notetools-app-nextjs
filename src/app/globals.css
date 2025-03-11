@@ -1,7 +1,28 @@
 @import "tailwindcss";
 
 
+@keyframes fade-in {
+  0% {
+    opacity: 0%;
+  } 50% {
+    opacity: 30%;
+  } 100% {
+    opacity: 100%;
+  }
+}
+
+.menu-text {
+  display: none;
+}
+
+.group:hover .menu-text {
+  display: block;
+  animation: fade-in 400ms ease-in-out;
+  transition: ease-in-out;
+}
+
 @theme {
-  --afacad: "var(--afacad)",
-  --poppins: "var(--poppins)"
+  --font-poppins: Poppins, sans-serif;
+  --font-afacad: Afacad, sans-serif;
+  --animate-fade-in: fade-in
 }
