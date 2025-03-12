@@ -6,6 +6,7 @@ import { formatDateRange } from "@/lib/format-date";
 import { CiCalendarDate } from "react-icons/ci";
 import { Avatar } from "@/components/ui/avatar";
 import Link from "next/link";
+import { StatLabel, StatRoot, StatValueText } from "@/components/ui/stat";
 
 export default async function Dashboard() {
     const currentDate = new Date();
@@ -30,56 +31,59 @@ export default async function Dashboard() {
                     <p className="text-xs text-nowrap">{dateRange}</p>
                 </p>
             </div>
-            <section className="flex items-center gap-5">
-                <div className="bg-white p-4 rounded-lg shadow-md w-full flex flex-col">
-                    <span className="bg-purple-300 w-fit p-2 rounded-lg text-lg text-purple-700">
+            <section className="flex items-center gap-5 mt-10">
+                <StatRoot>
+                    <span className="bg-blue-300 w-fit p-2 rounded-lg text-lg text-blue-700">
                         <MdBarChart />
                     </span>
                     <section className="flex justify-between items-center mt-14">
                         <div>
-                            <p className="text-xs font-light text-slate-400">Faturamento</p>
-                            <p className="text-3xl font-bold text-purple-700 font-afacad">R$4180,00</p>
+                            <StatLabel>Faturamento</StatLabel>
+                            <StatValueText>R$4812,00</StatValueText>
                         </div>
                         <div>
-                            <p className="text-xs font-light text-slate-400">Total de Vendas</p>
-                            <p className="text-3xl font-bold text-purple-700 font-afacad">47</p>
+                            <StatLabel>Vendas Totais</StatLabel>
+                            <StatValueText>50</StatValueText>
                         </div>
                     </section>
-                </div>
-                <div className="bg-white p-4 rounded-lg shadow-md w-full flex flex-col">
-                    <span className="bg-purple-300 w-fit p-2 rounded-lg text-lg text-purple-700">
+                </StatRoot>
+                <StatRoot>
+                    <span className="bg-orange-300 w-fit p-2 rounded-lg text-lg text-orange-700">
                         <TbMessageReport />
                     </span>
                     <section className="flex justify-between items-center mt-14">
                         <div>
-                            <p className="text-xs font-light text-slate-400">Vendas instaladas</p>
-                            <p className="text-3xl font-bold text-purple-700 font-afacad">39</p>
+                            <StatLabel>Concluídos</StatLabel>
+                            <StatValueText>40</StatValueText>
                         </div>
                         <div>
-                            <p className="text-xs font-light text-slate-400">Vendas Pendentes</p>
-                            <p className="text-3xl font-bold text-purple-700 font-afacad">5</p>
+                            <StatLabel>Pendentes</StatLabel>
+                            <StatValueText>6</StatValueText>
                         </div>
                         <div>
-                            <p className="text-xs font-light text-slate-400">Vendas Canceladas</p>
-                            <p className="text-3xl font-bold text-purple-700 font-afacad">3</p>
+                            <StatLabel>Cancelados</StatLabel>
+                            <StatValueText>4</StatValueText>
                         </div>
                     </section>
-                </div>
-                <div className="bg-white p-4 rounded-lg shadow-md w-full flex flex-col">
-                    <span className="bg-purple-300 w-fit p-2 rounded-lg text-lg text-purple-700">
+                </StatRoot>
+                <StatRoot>
+                    <span className="bg-green-300 w-fit p-2 rounded-lg text-lg text-green-700">
                         <RiPieChart2Fill />
                     </span>
                     <section className="flex justify-between items-center mt-14">
                         <div>
-                            <p className="text-xs font-light text-slate-400">Percentual de instalação</p>
-                            <p className="text-3xl font-bold text-purple-700 font-afacad">91%</p>
+                            <StatLabel>Percentual de Instalação</StatLabel>
+                            <StatValueText>94%</StatValueText>
                         </div>
                         <div>
-                            <p className="text-xs font-light text-slate-400">Percentual de Desistência</p>
-                            <p className="text-3xl font-bold text-purple-700 font-afacad">9%</p>
+                            <StatLabel>Percentual de Desistência</StatLabel>
+                            <StatValueText>6%</StatValueText>
                         </div>
                     </section>
-                </div>
+                </StatRoot>
+            </section>
+            <section className="flex items-center gap-4">
+                
             </section>
         </section>
     );

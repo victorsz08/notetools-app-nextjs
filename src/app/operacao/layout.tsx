@@ -1,3 +1,4 @@
+import { Header } from "@/components/ui/header";
 import { MenuItem } from "@/components/ui/menu-item";
 import { SibeBar } from "@/components/ui/sidebar";
 import { IconType } from "react-icons";
@@ -84,7 +85,8 @@ export default function Layout({ children } : { children: React.ReactNode }) {
                 </section>
             </SibeBar>
             <section className="pl-[90px]">
-                {children}
+                <Header name="Victor siqueira"/>
+                <section>{children}</section>
             </section>
         </section>
     )
