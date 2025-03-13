@@ -37,6 +37,7 @@ export async function signIn(prevState: any, formData: FormData) {
     };
 
     const cookieStore = await cookies();
+    
     cookieStore.set("nextauth.token", response.data.token, {
         maxAge: 60 * 60 * 12, // 12 horas
         httpOnly: true,

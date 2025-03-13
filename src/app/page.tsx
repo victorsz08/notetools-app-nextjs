@@ -6,7 +6,7 @@ import { useSession } from "./context/session-context";
 
 export default function Home() {
   const { isAuthenticated, loading } = useSession();
-
+  
   useEffect(() => {
     redirect("/operacao/dashboard")
   },[isAuthenticated, loading]);

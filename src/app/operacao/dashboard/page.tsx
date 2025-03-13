@@ -1,23 +1,16 @@
-import { Breadcrumb, BreadcrumbRoot } from "@/components/ui/breadcrumb";
+
 import { MdBarChart } from "react-icons/md";
 import { RiHome9Line, RiPieChart2Fill } from "react-icons/ri";
 import { TbMessageReport } from "react-icons/tb";
 import { formatDateRange } from "@/lib/format-date";
 import { CiCalendarDate } from "react-icons/ci";
 import { StatLabel, StatRoot, StatValueText } from "@/components/ui/stat";
+import { setCookie } from "nookies";
 
 export default async function Dashboard() {
-    const currentDate = new Date();
-    const dateRange = formatDateRange(currentDate);
 
     return (
         <section className="px-6 h-screen w-full">
-            <div className="flex justify-between items-center w-full">
-                <BreadcrumbRoot>
-                    <Breadcrumb href="/operacao"><RiHome9Line className="text-sm"/>Operacao</Breadcrumb>
-                    <Breadcrumb href="/operacao/dashboard">Dashboard</Breadcrumb>
-                </BreadcrumbRoot>
-            </div>
             <section className="flex items-center gap-5 mt-3">
                 <StatRoot>
                     <span className="bg-blue-300 w-fit p-2 rounded-lg text-lg text-blue-700">

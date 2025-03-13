@@ -1,47 +1,109 @@
-"use client";
+import * as React from "react"
+import { Slot } from "@radix-ui/react-slot"
+import { ChevronRight, MoreHorizontal } from "lucide-react"
 
-import Link from "next/link";
-import { usePathname } from "next/navigation";
-import React, { Fragment, isValidElement } from "react";
+import { cn } from "@/lib/utils"
 
+function Breadcrumb({ ...props }: React.ComponentProps<"nav">) {
+  return <nav aria-label="breadcrumb" data-slot="breadcrumb" {...props} />
+}
 
+function BreadcrumbList({ className, ...props }: React.ComponentProps<"ol">) {
+  return (
+    <ol
+      data-slot="breadcrumb-list"
+      className={cn(
+        "text-muted-foreground flex flex-wrap items-center gap-1.5 text-sm break-words sm:gap-2.5",
+        className
+      )}
+      {...props}
+    />
+  )
+}
 
-export interface BreadcrumbProps {
-    children?: React.ReactNode;
-    href: string;
-};
+function BreadcrumbItem({ className, ...props }: React.ComponentProps<"li">) {
+  return (
+    <li
+      data-slot="breadcrumb-item"
+      className={cn("inline-flex items-center gap-1.5", className)}
+      {...props}
+    />
+  )
+}
 
-export interface BreadcrumbRootProps {
-  children: React.ReactNode;
-};
+function BreadcrumbLink({
+  asChild,
+  className,
+  ...props
+}: React.ComponentProps<"a"> & {
+  asChild?: boolean
+}) {
+  const Comp = asChild ? Slot : "a"
 
+  return (
+    <Comp
+      data-slot="breadcrumb-link"
+      className={cn("hover:text-foreground transition-colors", className)}
+      {...props}
+    />
+  )
+}
 
-export function BreadcrumbRoot({ children }: BreadcrumbRootProps) {
-    const listChildren = React.Children.toArray(children).filter(isValidElement);
+function BreadcrumbPage({ className, ...props }: React.ComponentProps<"span">) {
+  return (
+    <span
+      data-slot="breadcrumb-page"
+      role="link"
+      aria-disabled="true"
+      aria-current="page"
+      className={cn("text-foreground font-normal", className)}
+      {...props}
+    />
+  )
+}
 
-    console.log(listChildren)
+function BreadcrumbSeparator({
+  children,
+  className,
+  ...props
+}: React.ComponentProps<"li">) {
+  return (
+    <li
+      data-slot="breadcrumb-separator"
+      role="presentation"
+      aria-hidden="true"
+      className={cn("[&>svg]:size-3.5", className)}
+      {...props}
+    >
+      {children ?? <ChevronRight />}
+    </li>
+  )
+}
 
-    return (
-        <nav className="flex items-center gap-1 w-full my-4">
-            {listChildren.map((child, index) => (
-                <Fragment key={index}>
-                    {child}
-                    {index < listChildren.length - 1 && (
-                        <span className="text-slate-500 text-xs font-medium">{" / "}</span>
-                    )}
-                </Fragment>
-            ))}
-        </nav>
-    )
-};
+function BreadcrumbEllipsis({
+  className,
+  ...props
+}: React.ComponentProps<"span">) {
+  return (
+    <span
+      data-slot="breadcrumb-ellipsis"
+      role="presentation"
+      aria-hidden="true"
+      className={cn("flex size-9 items-center justify-center", className)}
+      {...props}
+    >
+      <MoreHorizontal className="size-4" />
+      <span className="sr-only">More</span>
+    </span>
+  )
+}
 
-export function Breadcrumb({ children, href }: BreadcrumbProps) {
-    const pathname = usePathname();
-
-    return (
-        <a href={href} className={`text-xs font-normal flex items-center gap-1 hover:text-slate-700 duration-200 
-            ${pathname === href ? "text-slate-600" : "text-slate-400"}`}>
-            {children}
-        </a>
-    )
+export {
+  Breadcrumb,
+  BreadcrumbList,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+  BreadcrumbEllipsis,
 }
