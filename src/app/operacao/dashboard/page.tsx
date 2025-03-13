@@ -4,8 +4,6 @@ import { RiHome9Line, RiPieChart2Fill } from "react-icons/ri";
 import { TbMessageReport } from "react-icons/tb";
 import { formatDateRange } from "@/lib/format-date";
 import { CiCalendarDate } from "react-icons/ci";
-import { Avatar } from "@/components/ui/avatar";
-import Link from "next/link";
 import { StatLabel, StatRoot, StatValueText } from "@/components/ui/stat";
 
 export default async function Dashboard() {
@@ -13,25 +11,14 @@ export default async function Dashboard() {
     const dateRange = formatDateRange(currentDate);
 
     return (
-        <section className="p-6 h-screen w-full">
-            <section className="mb-3 flex justify-between items-center">
-                <h1 className="text-2xl font-semibold text-gray-600">Olá, Victor Siqueira</h1>
-                <Link href="/operacao/minha-conta" className="flex items-center gap-2">
-                    <Avatar name="Victor Siqueira"/>
-                    <p className="text-sm text-slate-500 hover:opacity-25 duration-200">Minha conta</p>
-                </Link>
-            </section>
+        <section className="px-6 h-screen w-full">
             <div className="flex justify-between items-center w-full">
                 <BreadcrumbRoot>
                     <Breadcrumb href="/operacao"><RiHome9Line className="text-sm"/>Operacao</Breadcrumb>
                     <Breadcrumb href="/operacao/dashboard">Dashboard</Breadcrumb>
                 </BreadcrumbRoot>
-                <p className="font-light text-purple-600 flex items-center gap-1 w-fit">
-                    <CiCalendarDate className="text-base"/>
-                    <p className="text-xs text-nowrap">{dateRange}</p>
-                </p>
             </div>
-            <section className="flex items-center gap-5 mt-10">
+            <section className="flex items-center gap-5 mt-3">
                 <StatRoot>
                     <span className="bg-blue-300 w-fit p-2 rounded-lg text-lg text-blue-700">
                         <MdBarChart />
