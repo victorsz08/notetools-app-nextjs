@@ -1,20 +1,22 @@
 import axios from "axios";
-import nookies from "nookies"
+import { parseCookies } from "nookies"
 
 const baseURL = "http://localhost:8000/";
 
 export const api = axios.create({
     baseURL: baseURL,
     headers: {
-        "Content-Type": "application/json"
+      "Content-Type": "application/json"
     }
 });
 
+const cookies = parseCookies();
+const token = cookies['nextauth.token'] 
+
+
 api.interceptors.request.use(
     function (config) {
-      const token = nookies.get(undefined, "nt-token");
-
-      if (token) {
+      if(token) {
         config.headers.Authorization = `Bearer ${token}`;
       }
       return config;
@@ -23,3 +25,5 @@ api.interceptors.request.use(
       return Promise.reject(error);
     }
 );
+
+api.defaults.headers['Authorization'] = `Bearer ${token}`;

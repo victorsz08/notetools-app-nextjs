@@ -1,5 +1,6 @@
 import { Poppins, Afacad } from "next/font/google";
 import "./globals.css";
+import { SessionContext } from "./context/session-context";
 
 const poppins = Poppins({
   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
@@ -22,11 +23,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR">
-      <body
-        className={`${poppins.variable} ${afacad.variable} bg-slate-300`}
-      >
-        {children}
-      </body>
+      <SessionContext>
+        <body
+          className={`${poppins.variable} ${afacad.variable} bg-slate-100`}
+        >
+          {children}
+        </body>
+      </SessionContext>
     </html>
   );
 }
