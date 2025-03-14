@@ -41,13 +41,13 @@ export function NavMain({
               className="group/collapsible"
             >
               <SidebarMenuItem
-                className="w-full"
+                className="w-full "
               >
                 <SidebarMenuButton
                     tooltip={item.label}
                     isActive={item.href === pathname}
                     className="data-[active=true]:text-white
-                    text-slate-500 data-[active=true]:bg-purple-700 cursor-pointer"
+                    text-slate-500 data-[active=true]:bg-purple-700 cursor-pointer py-5"
                     >
                         <item.icon/>
                         <span>{item.label}</span>
