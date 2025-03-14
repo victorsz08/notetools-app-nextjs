@@ -25,7 +25,7 @@ export default function RootLayout({
     <html lang="pt-BR">
       <SessionContext>
         <body
-          className={`${poppins.variable} ${afacad.variable} bg-slate-100`}
+          className={`${poppins.variable} ${afacad.variable} bg-slate-100 font-poppins`}
         >
           {children}
         </body>
