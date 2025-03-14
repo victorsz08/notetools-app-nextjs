@@ -12,6 +12,7 @@ import { RiHome9Line, RiStickyNoteLine } from "react-icons/ri";
 import { TbReport, TbHomeCheck } from "react-icons/tb";
 import { HeaderSidebar } from "./heade-sidebar";
 import { Separator } from "./ui/separator";
+import { FooterSidebar } from "./footer-sidebar";
 
 const items = [
   {
@@ -62,6 +63,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         <SidebarContent>
             <NavMain items={items}/>
         </SidebarContent>
+        <FooterSidebar/>
     </Sidebar>
   );
 }
