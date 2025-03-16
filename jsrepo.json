@@ -1,7 +1,8 @@
 {
 	"$schema": "https://unpkg.com/jsrepo@1.44.2/schemas/project-config.json",
 	"repos": [
-		"https://reactbits.dev/ts/tailwind"
+		"https://reactbits.dev/ts/tailwind",
+		"github/ieedan/std"
 	],
 	"includeTests": false,
 	"watermark": true,

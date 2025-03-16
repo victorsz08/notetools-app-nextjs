@@ -22,7 +22,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="pt-BR">
+    <html lang="pt-BR" suppressHydrationWarning>
       <SessionContext>
         <body
           className={`${poppins.variable} ${afacad.variable} bg-slate-100 font-poppins`}

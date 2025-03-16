@@ -10,7 +10,7 @@ import { LuShieldCheck } from "react-icons/lu";
 import { MdOutlineCheckBox } from "react-icons/md";
 import { RiHome9Line, RiStickyNoteLine } from "react-icons/ri";
 import { TbReport, TbHomeCheck } from "react-icons/tb";
-import { HeaderSidebar } from "./heade-sidebar";
+import { HeaderSidebar } from "./header-sidebar";
 import { Separator } from "./ui/separator";
 import { FooterSidebar } from "./footer-sidebar";
 
