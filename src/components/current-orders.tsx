@@ -90,7 +90,7 @@ export function CurrentOrders() {
       </CardHeader>
       <Separator />
       <CardContent>
-        {infoContract?.totalItems === 0 ?
+        {infoContract?.totalItems === 0 || !infoContract  ?
             <NotFoundContract/>
             :
         <Table className="w-full text-xs">
