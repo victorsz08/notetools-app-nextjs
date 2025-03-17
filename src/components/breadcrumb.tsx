@@ -16,7 +16,7 @@ export function Breadcrumb() {
 
 
     return (
-        <BreadcrumbList className="font-light text-xs p-1">
+        <BreadcrumbList className="font-normal text-xs p-1">
             <BreadcrumbItem>
                 <IoHome className="text-sm"/>
             </BreadcrumbItem>

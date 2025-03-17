@@ -80,7 +80,7 @@ export function DataChart() {
   }))
 
   return (
-    <Card className="flex flex-col w-[700px] pb-4">
+    <Card className="flex flex-col w-[720px] pb-4">
       <CardHeader className="items-center flex justify-between">
         <div>
             <CardTitle className="text-slate-600">Vendas</CardTitle>

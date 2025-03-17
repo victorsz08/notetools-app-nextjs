@@ -5,8 +5,11 @@ import { Avatar, AvatarFallback } from "./ui/avatar";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "./ui/dropdown-menu";
 import { SidebarFooter, SidebarMenu, SidebarMenuButton, SidebarMenuItem } from "./ui/sidebar";
 import Link from "next/link"
+import { useSession } from "@/app/context/session-context";
 
 export function FooterSidebar() {
+  const { signOut } = useSession();
+
     return (
         <SidebarFooter className="w-full">
           <SidebarMenu className="w-full">
@@ -27,7 +30,7 @@ export function FooterSidebar() {
                   <DropdownMenuItem>
                     <Link href="/operacao/meu-perfil">Meu Perfil</Link>
                   </DropdownMenuItem>
-                  <DropdownMenuItem className="hover:bg-red-300 cursor-pointer">
+                  <DropdownMenuItem onClick={() => signOut()} className="hover:bg-red-300 cursor-pointer">
                     <span className="text-red-600">Sair</span>
                   </DropdownMenuItem>
                 </DropdownMenuContent>

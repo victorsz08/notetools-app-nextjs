@@ -2,18 +2,10 @@
 
 import { api } from "@/services/api/axios";
 import { redirect } from "next/navigation";
-import { parseCookies, setCookie, destroyCookie } from "nookies";
+import Cookies from "js-cookie";
 import { createContext, useContext, useEffect, useState } from "react";
+import { cookies } from "next/headers";
 
-type SignInRequestData = {
-    username: string;
-    password: string;
-};
-
-type SignInResponseData = {
-    success?: boolean;
-    error?: string;
-};
 
 type UserType = {
     id: string;
@@ -39,9 +31,8 @@ export function SessionContext({ children } : { children: React.ReactNode }) {
     const isAuthenticated = !!user;
 
     useEffect(() => {
-        const cookies = parseCookies();
-        const token = cookies['nextauth.token'];
-        
+        const token = Cookies.get("nextauth.token");
+
         if(token) {
             setLoading(true);
             getSessionUser().then((response) => {
@@ -56,9 +47,13 @@ export function SessionContext({ children } : { children: React.ReactNode }) {
 
 
     async function signOut() {
-        destroyCookie(undefined, 'nextauth.token');
+        Cookies.remove("nextauth.token", {
+            path: "/",
+            sameSite: "lax",
+        });
+        
         setUser(null);
-        redirect("/auth/login");
+        return redirect("/auth/login");
     };
 
     return (

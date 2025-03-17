@@ -1,9 +1,10 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
+import { cookies } from 'next/headers';
 
-export function middleware(request: NextRequest) {
+export async function middleware(request: NextRequest) {
   const token = request.cookies.get('nextauth.token')?.value;
-
+  
   // Se o token não existir e o usuário não estiver na página de login, redirecione para /auth/login
   if (!token && request.nextUrl.pathname !== '/auth/login') {
     return NextResponse.redirect(new URL('/auth/login', request.url));

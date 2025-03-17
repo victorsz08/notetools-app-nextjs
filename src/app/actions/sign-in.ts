@@ -4,9 +4,6 @@ import { loginSchema } from "@/helpers/login.schema";
 import { api } from "@/services/api/axios";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
-import { parseCookies, setCookie } from "nookies";
-
-
 
 
 export async function signIn(prevState: any, formData: FormData) {
@@ -30,19 +27,20 @@ export async function signIn(prevState: any, formData: FormData) {
        return error.response
     });
 
+    
+
     if (response.status !== 200) {
         return {
             message: response.data.error
         }
     };
 
-    const cookieStore = await cookies();
-    
-    cookieStore.set("nextauth.token", response.data.token, {
-        maxAge: 60 * 60 * 12, // 12 horas
-        httpOnly: true,
-        path: "/"
+    const cookiesStore = await cookies();
+    cookiesStore.set("nextauth.token", response.data.token, {
+        maxAge: 60 * 60 * 8, // 8 hours
+        path: "/",
+        domain: process.env.NODE_ENV === "production" ? "localhost" : "notetools.online",
     });
 
-    redirect("/operacao/dashboard");
+    return redirect("/operacao/dashboard");
 };

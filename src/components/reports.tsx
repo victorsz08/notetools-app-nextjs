@@ -89,7 +89,7 @@ export function Reports() {
                         <Label 
                             className="text-[0.7rem] font-light text-slate-500"
                         >
-                            Percentual de Instalação
+                            Instalação
                         </Label>
                         <div className="flex place-items-baseline">
                             <CountUpText from={0} to={97}/>
@@ -100,7 +100,7 @@ export function Reports() {
                         <Label 
                             className="text-[0.7rem] font-light text-slate-500"
                         >
-                            Percentual de Desistência
+                            Desistência
                         </Label>
                         <div className="flex place-items-baseline">
                             <CountUpText from={0} to={3}/>

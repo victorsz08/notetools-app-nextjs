@@ -1,7 +1,7 @@
 import axios from "axios";
-import { parseCookies } from "nookies"
+import Cookies from "js-cookie";
 
-const baseURL = "http://localhost:8000/";
+const baseURL = "http://localhost:4000/";
 
 export const api = axios.create({
     baseURL: baseURL,
@@ -10,8 +10,7 @@ export const api = axios.create({
     }
 });
 
-const cookies = parseCookies();
-const token = cookies['nextauth.token'] 
+const token = Cookies.get("nextauth.token");
 
 
 api.interceptors.request.use(

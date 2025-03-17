@@ -2,7 +2,9 @@
 
 import { signIn } from "@/app/actions/sign-in";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 import { InputText } from "@/components/ui/input-text";
+import { LoaderButton } from "@/components/ui/loader-button";
 import { Separator } from "@/components/ui/separator";
 import Link from "next/link";
 import { useActionState } from "react";
@@ -25,18 +27,25 @@ export default function LoginPage() {
                         <small className="font-light text-xs text-slate-400">Entre na sua conta para continuar</small>
                     </div>
                 </div>
-                <Separator/>
+                <Separator className="my-4"/>
                 <form action={formAction}>
                     <div className="text-start mb-6 flex flex-col gap-1">
-                        <label className="text-xs font-medium text-slate-500">Username</label>
-                        <InputText type="text" name="username" invalid={state.message ? true : false}/>
+                        <Input 
+                            type="text" 
+                            name="username" 
+                            placeholder="Username" 
+                            className="py-6 w-[360px] placeholder:text-slate-400 placeholder:text-light"
+                        />
                         {state.message && (
                             <p className="text-red-600 text-xs font-light">{state.message}</p>
                         )}
                     </div>
                     <div className="text-start mb-1 flex flex-col gap-1">
-                        <label className="text-xs font-medium text-slate-500">Senha</label>
-                        <InputText type="password" name="password" invalid={state.message ? true : false}/>
+                        <Input 
+                            type="password" 
+                            name="password" 
+                            placeholder="Senha" 
+                            className="py-6 w-[360px] placeholder:text-slate-400 placeholder:text-light"/>
                         {state.message && (
                             <p className="text-red-600 text-xs font-light">{state.message}</p>
                         )}
@@ -47,9 +56,15 @@ export default function LoginPage() {
                             Esqueceu a senha?
                         </Link>
                     </div>
-                    <Button type="submit" loading={pending}>Entrar</Button>
+                    <Button 
+                        className="w-full py-6 cursor-pointer hover:opacity-90 duration-300" 
+                        type="submit"
+                        disabled={pending}
+                    >
+                        {!pending ? "Entrar" : <LoaderButton/>}
+                    </Button>
                 </form>
-                <Separator/>
+                <Separator className="my-4"/>
                 <div className="text-center">
                     <p className="text-sm font-semibold text-slate-500">Notetools</p>
                     <small className="text-xs font-light text-slate-400">Copyright 2024 - 2025 - v2.0.1</small>
