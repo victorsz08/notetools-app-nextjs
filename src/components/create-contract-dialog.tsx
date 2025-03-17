@@ -8,6 +8,7 @@ import { useActionState, useCallback, useEffect, useState } from "react";
 import { createContract } from "@/app/actions/contracts/create.action";
 import { LoaderButton } from "./ui/loader-button";
 import { Combobox } from "./combobox";
+import { InputNumber } from "./input-number";
 
 const initialState = {
     message: {},
@@ -68,7 +69,7 @@ export function CreateContractDialog() {
                         )}
                     </div>
                     <div className="flex flex-col">
-                        
+                        <InputNumber name="price"/>
                     </div>    
                     <div className="flex justify-end items-center gap-2 mt-4">
                         <Button type="submit" className="py-4 cursor-pointer" disabled={pending}>
