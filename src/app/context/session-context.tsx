@@ -5,6 +5,7 @@ import { redirect } from "next/navigation";
 import Cookies from "js-cookie";
 import { createContext, useContext, useEffect, useState } from "react";
 import { cookies } from "next/headers";
+import { response } from "express";
 
 
 type UserType = {
@@ -32,25 +33,16 @@ export function SessionContext({ children } : { children: React.ReactNode }) {
 
     useEffect(() => {
         const token = Cookies.get("nextauth.token");
-
         if(token) {
             setLoading(true);
-            getSessionUser().then((response) => {
-                if(response.status !== 200) {
-                    redirect("/auth/login");
-                };
-                setUser(response.data);
-            })
-        };
+            getSessionUser().then(response => { setUser(response.data); setLoading(false); });
 
+        };
     },[]);
 
 
     async function signOut() {
-        Cookies.remove("nextauth.token", {
-            path: "/",
-            sameSite: "lax",
-        });
+        Cookies.remove("nextauth.token");
         
         setUser(null);
         return redirect("/auth/login");
@@ -69,11 +61,9 @@ export function SessionContext({ children } : { children: React.ReactNode }) {
 };
 
 export async function getSessionUser() {
-    const data = await api.get("/auth/session").then((response) => {
-        return response
-    });
+    const response = await api.get("/auth/session");
 
-    return data;
+    return response;
 };
 
 export const useSession = () => useContext(AuthContext);

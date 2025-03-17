@@ -3,20 +3,19 @@
 import { signIn } from "@/app/actions/sign-in";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { InputText } from "@/components/ui/input-text";
 import { LoaderButton } from "@/components/ui/loader-button";
 import { Separator } from "@/components/ui/separator";
 import Link from "next/link";
 import { useActionState } from "react";
 import { SiApacheecharts } from "react-icons/si";
 
+const inicialState = {
+    message: ""
+};
 
 export default function LoginPage() {
-    const inicialState = {
-        message: ""
-    };
-
-    const [state, formAction, pending] = useActionState(signIn, inicialState)
+    const [state, formAction, pending] = useActionState(signIn, inicialState);
+    
     return (
         <section className="font-poppins bg-slate-200 h-screen w-screen grid justify-center items-center">
             <div className="bg-white rounded-lg px-8 py-10">

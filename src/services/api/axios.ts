@@ -6,23 +6,17 @@ const baseURL = "http://localhost:4000/";
 export const api = axios.create({
     baseURL: baseURL,
     headers: {
-      "Content-Type": "application/json"
+      "Content-Type": "application/json",
+      "Accept": "application/json",
     }
 });
 
-const token = Cookies.get("nextauth.token");
-
-
-api.interceptors.request.use(
-    function (config) {
-      if(token) {
+api.interceptors.request.use(config => {
+    const token = Cookies.get("nextauth.token");
+    if (token) {
         config.headers.Authorization = `Bearer ${token}`;
-      }
-      return config;
-    },
-    function (error) {
-      return Promise.reject(error);
     }
-);
-
-api.defaults.headers['Authorization'] = `Bearer ${token}`;
+    return config;
+}, error => {
+    return Promise.reject(error);
+});

@@ -38,8 +38,6 @@ export async function signIn(prevState: any, formData: FormData) {
     const cookiesStore = await cookies();
     cookiesStore.set("nextauth.token", response.data.token, {
         maxAge: 60 * 60 * 8, // 8 hours
-        path: "/",
-        domain: process.env.NODE_ENV === "production" ? "localhost" : "notetools.online",
     });
 
     return redirect("/operacao/dashboard");
