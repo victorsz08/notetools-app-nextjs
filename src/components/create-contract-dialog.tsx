@@ -7,10 +7,31 @@ import { Input } from "./ui/input";
 import { useActionState, useCallback, useEffect, useState } from "react";
 import { createContract } from "@/app/actions/contracts/create.action";
 import { LoaderButton } from "./ui/loader-button";
+import { Combobox } from "./combobox";
 
 const initialState = {
     message: {},
 }
+const options = [
+    { value: '1', label: 'Option 1' },
+    { value: '2', label: 'Option 2' },
+    { value: '3', label: 'Option 3' },
+    { value: '1', label: 'Option 1' },
+    { value: '2', label: 'Option 2' },
+    { value: '3', label: 'Option 3' },
+    { value: '1', label: 'Option 1' },
+    { value: '2', label: 'Option 2' },
+    { value: '3', label: 'Option 3' },
+    { value: '1', label: 'Option 1' },
+    { value: '2', label: 'Option 2' },
+    { value: '3', label: 'Option 3' },
+    { value: '1', label: 'Option 1' },
+    { value: '2', label: 'Option 2' },
+    { value: '3', label: 'Option 3' },
+    { value: '1', label: 'Option 1' },
+    { value: '2', label: 'Option 2' },
+    { value: '3', label: 'Option 3' },
+]
 
 export function CreateContractDialog() {
     const [state, formAction, pending] = useActionState(createContract, initialState);
@@ -29,11 +50,26 @@ export function CreateContractDialog() {
                     <DialogTitle>Novo contrato</DialogTitle>
                     <DialogDescription>Preencha todas as informações</DialogDescription>
                 </DialogHeader>
-                <form action={formAction}>
-                    <Input name="number"  placeholder="N° do contrato"/>
-                    {state.message.number && (
-                        <p className="text-red-600 text-xs font-light">{state.message.number}</p>
-                    )}
+                <form action={formAction} className="flex flex-col gap-4">
+                    <div className="flex flex-col">
+                        <Input name="number"  placeholder="N° do contrato"/>
+                        {state.message.number && (
+                            <p className="text-red-600 text-xs font-light">{state.message.number}</p>
+                        )}
+                    </div>
+                    <div className="flex flex-col">
+                        <Combobox
+                            options={options}
+                            name="local"
+                            placeholder="Selecione a Cidade"
+                        />
+                        {state.message.local && (
+                            <p className="text-red-600 text-xs font-light">{state.message.local}</p>
+                        )}
+                    </div>
+                    <div className="flex flex-col">
+                        
+                    </div>    
                     <div className="flex justify-end items-center gap-2 mt-4">
                         <Button type="submit" className="py-4 cursor-pointer" disabled={pending}>
                             {pending ? <LoaderButton/> : "Criar"}
